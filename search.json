@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Concepts of Paleoecology",
+    "section": "",
+    "text": "1 Welcome\nWelcome to Concepts of Paleoecology! This book is for teaching the concepts of Quaternary (past 2.58 million years) Paleoecology through Neotoma data."
+  },
+  {
+    "objectID": "index.html#about-this-book",
+    "href": "index.html#about-this-book",
+    "title": "Concepts of Paleoecology",
+    "section": "1.1 About This Book",
+    "text": "1.1 About This Book\nThis book will cover the following\n\n1.1.1 Features\n\nClear explanations with diagrams and visuals\nInteractive code cells\nPractice"
+  },
+  {
+    "objectID": "chapters/introduction.html#what-this-book-is",
+    "href": "chapters/introduction.html#what-this-book-is",
+    "title": "2  Introduction",
+    "section": "2.1 What this Book is",
+    "text": "2.1 What this Book is\nConcepts of Paleoecology based on Neotoma data"
+  },
+  {
+    "objectID": "chapters/introduction.html#what-it-isnt",
+    "href": "chapters/introduction.html#what-it-isnt",
+    "title": "2  Introduction",
+    "section": "2.2 What it isn’t",
+    "text": "2.2 What it isn’t\nMethods of paleo, non Neotoma, deeper time"
+  },
+  {
+    "objectID": "chapters/chp1_stratplot.html#overview",
+    "href": "chapters/chp1_stratplot.html#overview",
+    "title": "3  Stratigraphic Plotting",
+    "section": "3.1 Overview",
+    "text": "3.1 Overview\nThis page is about stratigraphic plotting using Tilia, Rioja, poldata…"
+  },
+  {
+    "objectID": "chapters/chp1_stratplot.html#running-code",
+    "href": "chapters/chp1_stratplot.html#running-code",
+    "title": "3  Stratigraphic Plotting",
+    "section": "3.2 Running Code",
+    "text": "3.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\nlibrary(rioja)\n\nWarning: package 'rioja' was built under R version 4.3.2\n\n\nThis is rioja  1.0-6\n\ndata(aber)\nstrat.plot(aber$spec, scale.percent=TRUE, y.rev=TRUE)"
+  }
+]
