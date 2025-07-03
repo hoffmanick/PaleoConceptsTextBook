@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Stratigraphic Plotting – Concepts of Paleoecology</title>
+<title>Stratigraphic Plotting – Concepts of Paleoecology</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chp1_stratplot.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stratigraphic Plotting</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chp1_stratplot.html"><span class="chapter-title">Stratigraphic Plotting</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -143,20 +143,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Concepts of Paleoecology</span></span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Concepts of Paleoecology</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="../chapters/introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/chp1_stratplot.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stratigraphic Plotting</span></span></a>
+  <a href="../chapters/chp1_stratplot.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Stratigraphic Plotting</span></a>
   </div>
 </li>
     </ul>
@@ -169,8 +166,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">3.1</span> Overview</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">3.2</span> Running Code</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#concepts-of-stratigraphic-plotting" id="toc-concepts-of-stratigraphic-plotting" class="nav-link" data-scroll-target="#concepts-of-stratigraphic-plotting">Concepts of Stratigraphic Plotting</a></li>
+  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting">Plotting</a>
+  <ul class="collapse">
+  <li><a href="#rioja" id="toc-rioja" class="nav-link" data-scroll-target="#rioja">Rioja</a></li>
+  <li><a href="#tilia" id="toc-tilia" class="nav-link" data-scroll-target="#tilia">Tilia</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -179,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stratigraphic Plotting</span></h1>
+<h1 class="title"><span class="chapter-title">Stratigraphic Plotting</span></h1>
 </div>
 
 
@@ -196,13 +199,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">3.1</span> Overview</h2>
-<p>This page is about stratigraphic plotting using Tilia, Rioja, poldata…</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Stratigraphic plotting enables visualization of patterns in the fossil archive for a wide range of proxy types analyzed as assemblages (e.g., pollen, diatoms, cladocerans, chironomids, etc.). In order to plot stratigraphic data, all you need are counts of a fossil assemblage, identified to arbitrary taxonomic resolution, with depth. An age-depth model allows for the conversion of depths to ages, thereby enabling comparison across sites and with independent chronologies of climate, but such a model is not strictly necessary for the plotting of stratigraphic data.</p>
+<p>In this tutorial, we will discuss some of the conceptual underpinnings of stratigraphic plotting, with a focus on pollen, and we will demonstrate how to plot pollen data using the R package <code>rioja</code> and through the Tilia software.</p>
 </section>
-<section id="running-code" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="running-code"><span class="header-section-number">3.2</span> Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<section id="concepts-of-stratigraphic-plotting" class="level2">
+<h2 class="anchored" data-anchor-id="concepts-of-stratigraphic-plotting">Concepts of Stratigraphic Plotting</h2>
+<p>What are we talking about when we talk about pollen? There is no obvious way to back-calculate from a count of <em>Poaceae</em> pollen grains in a core section to the area, say, within 10 kilometers of a lake which is covered by grasses, without a mechanistic model that perfectly simulates the many paths that pollen may take from its varied sources to its deposition. In the absence of such a model, analysts tend to prefer to analyze pollen assemblages in terms of the proportion contributed within a given core section by any particular taxon. These <strong>relative</strong> abundances of pollen taxa are more ecologically meaningful, but their interpretation is not straightforward.</p>
+<p>For one thing, proportions of pollen do not necessarily correspond to proportions of vegetation within some distance of a lake. Different kinds of plants produce pollen at differential rates, depending on their life strategies. Wind-blown pollinators (e.g., pines) must produce far more pollen than plants whose pollination is mediated by insects (e.g., apples). Pines are therefore overrepresented in the pollen record with respect to apples.</p>
+<p>Another issue concerns spurious changes. Given a pollen record - rendered in percentages - that consists of solely pines and apples, an apparent decrease with depth in the proportion of pine pollen may represent</p>
+<ul>
+<li>an actual decrease in pine pollen counts,</li>
+<li>an increase in apple pollen counts,</li>
+<li>an increase in pine coupled with a greater increase in apple, or</li>
+<li>a decrease in pine coupled with a lesser decrease in apple.</li>
+</ul>
+<p>For these reasons, there have been attempts to render pollen not in terms of bare counts or relative abundances, but in absolute concentrations. Such concentrations have the benefit of avoiding the conceptual difficulties of spurious changes. However, somewhat like counts, they are difficult to interpret on their own, as well as highly variable, even at different points within the same lake for the same age.</p>
+</section>
+<section id="plotting" class="level2">
+<h2 class="anchored" data-anchor-id="plotting">Plotting</h2>
+<p>In 1980, the Quaternary paleoecologist John Birks wrote that computer-drawn pollen diagrams “are very useful for preliminary arrangement and interpretation of the data …. However, [they] are not sufficiently good for publication, and diagrams for publication must still be drafted by hand.” In the 2020s, all published pollen diagrams are computer generated. One wonders whether the deliberate process of hand drawing encouraged earlier generations of paleoecologists to think more deeply about the patterns they were representing. But today’s users can rapidly reconfigure their diagrams in an iterative interpretation process and finally create highly customized visualizations using the array of software tools which now exist for stratigraphic plotting. In this chapter, we’ll focus on just two: the R package <code>Rioja</code> and the Tilia software.</p>
+<section id="rioja" class="level3">
+<h3 class="anchored" data-anchor-id="rioja">Rioja</h3>
+<p>In order to plot some pollen data using the R package <code>rioja</code>, we need to call it using the <code>library()</code> function as below. We’ll plot the sample data provided with the package, <code>aber</code>, which are “pollen stratigraphic data from Abernethy Forest, Scotland, spanning approximately 5500 - 12100 BP (from Birks &amp; Mathews 1978).” The aber object is a list with three components:</p>
+<ul>
+<li>spec - the actual pollen spectra, 49 rows of samples named by depth of 36 taxa arranged as columns, formatted as percentages</li>
+<li>ages - a table mapping depths to uncalibrated and calibrated radiocarbon years, and</li>
+<li>names - a table mapping taxa codes in spec to full taxonomic names and ecological group</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rioja)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -211,16 +236,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>This is rioja  1.0-6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(aber)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber<span class="sc">$</span>spec, <span class="at">scale.percent=</span><span class="cn">TRUE</span>, <span class="at">y.rev=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(aber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s take a closer look at spec. One thing we might want to do to ensure data quality is make sure the percentages aren’t obviously wrong. All the pollen percentages for any given row should sum to 100, since each individual pollen percentage is the relative abundance of that taxon at that depth. Let’s see if the data meet this expectation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(aber<span class="sc">$</span>spec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   300    305    310    315    320    325    330    335    340    345    350 
+ 99.42  99.82 100.01  99.54  99.81  99.98  99.98  99.82  99.99  99.47  99.48 
+   355    357    360    363    365    367    370    373    375    405    410 
+ 99.68  99.79  99.85  99.78  99.99  99.57  99.83  99.81  99.48  99.48  99.14 
+   415    420    425    430    435    440    445    450    455    460    465 
+ 99.46  98.94  98.63  99.46  99.47  98.75  98.62  99.52  99.36  98.48  99.29 
+   470    475    480    485    490    500    505    510    515    520    525 
+ 97.60  97.92  96.83  97.08  99.33  97.40  98.20  98.75  99.03  99.64  98.94 
+   530    535    540    545    550 
+ 98.55  98.76 100.00  99.02  99.99 </code></pre>
+</div>
+</div>
+<p>It’s not perfect, but they add up more or less to 100 - good! Let’s actually try plotting the data now, using the <code>strat.plot</code> function. The first argument of the function is the pollen spectra to be represented, and we add two additional arguments. Setting <code>scale.percent</code> to true gives a better visualization for percentage data, and setting <code>y.rev</code> to true reverses the y axis, so larger values are below smaller values. This is a standard convention for stratigraphic plots, where age and depth increase as you proceed further down the core.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber<span class="sc">$</span>spec, <span class="at">scale.percent=</span><span class="cn">TRUE</span>, <span class="at">y.rev=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="chp1_stratplot_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="chp1_stratplot_files/figure-html/three-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>It looks pretty good! But one criticism we might make is that it’s a little hard to isolate any patterns of ecological change within the complexity. <i>Betula</i> seems to be dominant for a period before being superseded by <i>Pinus sylvestris</i>, but the other pollen taxa are hard to interpret. Many of them are such small percentages compared to <i>Betula</i> and <i>Pinus sylvestris</i> that it’s difficult to see what’s going on with them.</p>
+<p>Because those smaller pollen percentages are so difficult to see and are only adding to the clutter at this point, we can choose remove them. This can be done systematically by eliminating all columns with a mean percentage of pollen less than, say, 3%. The following list comprehension achieves that.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>aber_streamlined1  <span class="ot">=</span> aber<span class="sc">$</span>spec[<span class="fu">colMeans</span>(aber<span class="sc">$</span>spec)<span class="sc">&gt;</span><span class="dv">3</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_streamlined1, <span class="at">scale.percent=</span><span class="cn">TRUE</span>, <span class="at">y.rev=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chp1_stratplot_files/figure-html/four-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>That looks even better! A clearer story is emerging: we see an early period dominated by herbs and grasses, followed by an intermediate period of birch and hazel, and ending with an era dominated by pine (pine pollen, at least!).</p>
+<p>But how fast did these events occur? We can’t simply assume that depth is one-to-one with time, because as the vegetation tracked by this sediment core changed, the rate of sedimentation may well have changed too. One can imagine that a prairie landscape suggested at the bottom of the core, perhaps grazed by large herds of animals, would have greater disturbance and sedimentation then a later forest landscape, where tree roots are keeping the soil solidly in place.</p>
+<p>Luckily, the aber dataset comes with a chronology that we can use in place of depth for our y axis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_streamlined1, <span class="at">yvar=</span>aber<span class="sc">$</span>ages<span class="sc">$</span><span class="st">`</span><span class="at">Age (years BP)</span><span class="st">`</span>, <span class="at">scale.percent=</span><span class="cn">TRUE</span>, <span class="at">y.rev=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chp1_stratplot_files/figure-html/five-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Substituting time for depth doesn’t wildly change our understanding of the dynamics at Abernethy. One of the biggest changes is that, actually, that earliest ecological period lasted longer than we might have guessed from the depth profile, suggesting a slower sedimentation rate then. Still, having a chronology is generally preferably to going by bare depth, since it enables comparison to other sites and allows us to disentangle real ecological change from change in sedimentation rate.</p>
+</section>
+<section id="tilia" class="level3">
+<h3 class="anchored" data-anchor-id="tilia">Tilia</h3>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Birks Quaternary Paleoecology</li>
+<li>Birks, HH &amp; Mathews, RW (1978). Studies in the vegetational history of Scotland V. Late Devensian and early Flandrian macrofossil stratigraphy at Abernethy Forest, Invernessshire. New Phytologist 80, 455-84.</li>
+</ul>
 
 
 </section>
@@ -628,7 +712,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../chapters/introduction.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
