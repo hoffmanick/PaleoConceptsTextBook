@@ -168,11 +168,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#concepts-of-stratigraphic-plotting" id="toc-concepts-of-stratigraphic-plotting" class="nav-link" data-scroll-target="#concepts-of-stratigraphic-plotting">Concepts of Stratigraphic Plotting</a></li>
-  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting">Plotting</a>
+  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting">Plotting</a></li>
+  <li><a href="#plotting-with-rioja" id="toc-plotting-with-rioja" class="nav-link" data-scroll-target="#plotting-with-rioja">Plotting with Rioja</a></li>
+  <li><a href="#plotting-with-tilia" id="toc-plotting-with-tilia" class="nav-link" data-scroll-target="#plotting-with-tilia">Plotting with Tilia</a>
   <ul class="collapse">
-  <li><a href="#rioja" id="toc-rioja" class="nav-link" data-scroll-target="#rioja">Rioja</a></li>
-  <li><a href="#tilia" id="toc-tilia" class="nav-link" data-scroll-target="#tilia">Tilia</a></li>
+  <li><a href="#formatting-data" id="toc-formatting-data" class="nav-link" data-scroll-target="#formatting-data">Formatting data</a></li>
+  <li><a href="#pasting-data-into-tilia" id="toc-pasting-data-into-tilia" class="nav-link" data-scroll-target="#pasting-data-into-tilia">Pasting data into Tilia</a></li>
+  <li><a href="#modifying-pollen-diagram" id="toc-modifying-pollen-diagram" class="nav-link" data-scroll-target="#modifying-pollen-diagram">Modifying Pollen Diagram</a></li>
+  <li><a href="#visualizing-summary-dynamics" id="toc-visualizing-summary-dynamics" class="nav-link" data-scroll-target="#visualizing-summary-dynamics">Visualizing Summary Dynamics</a></li>
+  <li><a href="#cluster-analysis" id="toc-cluster-analysis" class="nav-link" data-scroll-target="#cluster-analysis">Cluster Analysis</a></li>
   </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -220,8 +226,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plotting" class="level2">
 <h2 class="anchored" data-anchor-id="plotting">Plotting</h2>
 <p>In 1980, the Quaternary paleoecologist John Birks wrote that computer-drawn pollen diagrams “are very useful for preliminary arrangement and interpretation of the data …. However, [they] are not sufficiently good for publication, and diagrams for publication must still be drafted by hand.” In the 2020s, all published pollen diagrams are computer generated. One wonders whether the deliberate process of hand drawing encouraged earlier generations of paleoecologists to think more deeply about the patterns they were representing. But today’s users can rapidly reconfigure their diagrams in an iterative interpretation process and finally create highly customized visualizations using the array of software tools which now exist for stratigraphic plotting. In this chapter, we’ll focus on just two: the R package <code>Rioja</code> and the Tilia software.</p>
-<section id="rioja" class="level3">
-<h3 class="anchored" data-anchor-id="rioja">Rioja</h3>
+</section>
+<section id="plotting-with-rioja" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-with-rioja">Plotting with Rioja</h2>
 <p>In order to plot some pollen data using the R package <code>rioja</code>, we need to call it using the <code>library()</code> function as below. We’ll plot the sample data provided with the package, <code>aber</code>, which are “pollen stratigraphic data from Abernethy Forest, Scotland, spanning approximately 5500 - 12100 BP (from Birks &amp; Mathews 1978).” The aber object is a list with three components:</p>
 <ul>
 <li>spec - the actual pollen spectra, 49 rows of samples named by depth of 36 taxa arranged as columns, formatted as percentages</li>
@@ -295,9 +302,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Substituting time for depth doesn’t wildly change our understanding of the dynamics at Abernethy. One of the biggest changes is that, actually, that earliest ecological period lasted longer than we might have guessed from the depth profile, suggesting a slower sedimentation rate then. Still, having a chronology is generally preferably to going by bare depth, since it enables comparison to other sites and allows us to disentangle real ecological change from change in sedimentation rate.</p>
 </section>
-<section id="tilia" class="level3">
-<h3 class="anchored" data-anchor-id="tilia">Tilia</h3>
+<section id="plotting-with-tilia" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-with-tilia">Plotting with Tilia</h2>
+<p>Tilia is a software program developed by Eric Grimm which enables users to upload their data into Neotoma, and also allows users to develop pollen diagrams, using Neotoma data or their own data. You can install Tilia by following the directions on this <a href="http://neotomadb.org/apps/tilia">page</a></p>
+<section id="formatting-data" class="level3">
+<h3 class="anchored" data-anchor-id="formatting-data">Formatting data</h3>
+<p>In order to plot pollen data from a non-Neotoma source in Tilia, there is a preliminary data-formatting step. We want to convert our pollen counts into pollen percentages, which we will plot directly in Tilia. In order to calculate pollen percentages, we need to sum all the pollen counted at each sample depth and then divide each individual count by the count sum at that depth, as shown in the following video.</p>
+<video width="640" controls="">
+<source src="../videos/CountsToPercentages.mp4" type="video/mp4">
+<p>Your browser does not support the video tag. </p>
+</video></section>
+<section id="pasting-data-into-tilia" class="level3">
+<h3 class="anchored" data-anchor-id="pasting-data-into-tilia">Pasting data into Tilia</h3>
+<p>Once the data are properly formatted, they can be pasted into a Tilia spreadsheet. In Tilia, each row corresponds to a taxon, and each column corresponds to a sample depth. Those sample depths can be indexed either as depths, ages, or both. Also, Tilia provides a “Group” column where the habit or ecological group of the taxon in question can be noted.</p>
+<video width="640" controls="">
+<source src="../videos/PastingDataIntoTilia.mp4" type="video/mp4">
+<p>Your browser does not support the video tag. </p>
+</video></section>
+<section id="modifying-pollen-diagram" class="level3">
+<h3 class="anchored" data-anchor-id="modifying-pollen-diagram">Modifying Pollen Diagram</h3>
+<p>Once you’ve made the pollen diagram, there are some convenient ways to modify it in Tilia. These include</p>
+<ul>
+<li>rearranging columns</li>
+<li>deleting columns that you don’t care about, and</li>
+<li>exaggerating the scale of taxa that exhibit small but important changes.</li>
+</ul>
+<video width="640" controls="">
+<source src="../videos/ModifyingPollenDiagram.mp4" type="video/mp4">
+<p>Your browser does not support the video tag. </p>
+</video></section>
+<section id="visualizing-summary-dynamics" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-summary-dynamics">Visualizing Summary Dynamics</h3>
+<p>Another addition to your plot that Tilia allows for is the creation of a summary panel that shows the broad vegetation dynamics, say, between herbs and trees. The following video shows how to create that summary panel.</p>
+<video width="640" controls="">
+<source src="../videos/SummaryPanelVegDynamics.mp4" type="video/mp4">
+<p>Your browser does not support the video tag. </p>
+</video></section>
+<section id="cluster-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="cluster-analysis">Cluster Analysis</h3>
+<p>Lastly, Tilia makes it easy to insert a stratigraphically constrained cluster analysis (CONISS) into your plot. Watch this video to learn how.</p>
+<video width="640" controls="">
+<source src="../videos/CONISS.mp4" type="video/mp4">
+<p>Your browser does not support the video tag. </p>
+</video></section>
 </section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>In this module, we’ve walked through how to start building stratigraphic plots (with a focus on pollen data) using the R library Rioja and Eric Grimm’s Tilia. We hope that it has been helpful. Please reach out with any questions.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
