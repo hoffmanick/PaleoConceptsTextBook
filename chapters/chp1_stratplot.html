@@ -167,9 +167,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#concepts-of-stratigraphic-plotting" id="toc-concepts-of-stratigraphic-plotting" class="nav-link" data-scroll-target="#concepts-of-stratigraphic-plotting">Concepts of Stratigraphic Plotting</a></li>
-  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting">Plotting</a></li>
-  <li><a href="#plotting-with-rioja" id="toc-plotting-with-rioja" class="nav-link" data-scroll-target="#plotting-with-rioja">Plotting with Rioja</a></li>
+  <li><a href="#plotting-with-rioja" id="toc-plotting-with-rioja" class="nav-link" data-scroll-target="#plotting-with-rioja">Plotting with Rioja</a>
+  <ul class="collapse">
+  <li><a href="#substituting-age-for-depth" id="toc-substituting-age-for-depth" class="nav-link" data-scroll-target="#substituting-age-for-depth">Substituting Age for Depth</a></li>
+  <li><a href="#scale-factor" id="toc-scale-factor" class="nav-link" data-scroll-target="#scale-factor">Scale Factor</a></li>
+  <li><a href="#column-order" id="toc-column-order" class="nav-link" data-scroll-target="#column-order">Column Order</a></li>
+  <li><a href="#coniss" id="toc-coniss" class="nav-link" data-scroll-target="#coniss">CONISS</a></li>
+  <li><a href="#summary-panel" id="toc-summary-panel" class="nav-link" data-scroll-target="#summary-panel">Summary Panel</a></li>
+  <li><a href="#other-changes" id="toc-other-changes" class="nav-link" data-scroll-target="#other-changes">Other Changes</a></li>
+  </ul></li>
   <li><a href="#plotting-with-tilia" id="toc-plotting-with-tilia" class="nav-link" data-scroll-target="#plotting-with-tilia">Plotting with Tilia</a>
   <ul class="collapse">
   <li><a href="#formatting-data" id="toc-formatting-data" class="nav-link" data-scroll-target="#formatting-data">Formatting data</a></li>
@@ -208,24 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>Stratigraphic plotting enables visualization of patterns in the fossil archive for a wide range of proxy types analyzed as assemblages (e.g., pollen, diatoms, cladocerans, chironomids, etc.). In order to plot stratigraphic data, all you need are counts of a fossil assemblage, identified to arbitrary taxonomic resolution, with depth. An age-depth model allows for the conversion of depths to ages, thereby enabling comparison across sites and with independent chronologies of climate, but such a model is not strictly necessary for the plotting of stratigraphic data.</p>
-<p>In this tutorial, we will discuss some of the conceptual underpinnings of stratigraphic plotting, with a focus on pollen, and we will demonstrate how to plot pollen data using the R package <code>rioja</code> and through the Tilia software.</p>
-</section>
-<section id="concepts-of-stratigraphic-plotting" class="level2">
-<h2 class="anchored" data-anchor-id="concepts-of-stratigraphic-plotting">Concepts of Stratigraphic Plotting</h2>
-<p>What are we talking about when we talk about pollen? There is no obvious way to back-calculate from a count of <em>Poaceae</em> pollen grains in a core section to the area, say, within 10 kilometers of a lake which is covered by grasses, without a mechanistic model that perfectly simulates the many paths that pollen may take from its varied sources to its deposition. In the absence of such a model, analysts tend to prefer to analyze pollen assemblages in terms of the proportion contributed within a given core section by any particular taxon. These <strong>relative</strong> abundances of pollen taxa are more ecologically meaningful, but their interpretation is not straightforward.</p>
-<p>For one thing, proportions of pollen do not necessarily correspond to proportions of vegetation within some distance of a lake. Different kinds of plants produce pollen at differential rates, depending on their life strategies. Wind-blown pollinators (e.g., pines) must produce far more pollen than plants whose pollination is mediated by insects (e.g., apples). Pines are therefore overrepresented in the pollen record with respect to apples.</p>
-<p>Another issue concerns spurious changes. Given a pollen record - rendered in percentages - that consists of solely pines and apples, an apparent decrease with depth in the proportion of pine pollen may represent</p>
-<ul>
-<li>an actual decrease in pine pollen counts,</li>
-<li>an increase in apple pollen counts,</li>
-<li>an increase in pine coupled with a greater increase in apple, or</li>
-<li>a decrease in pine coupled with a lesser decrease in apple.</li>
-</ul>
-<p>For these reasons, there have been attempts to render pollen not in terms of bare counts or relative abundances, but in absolute concentrations. Such concentrations have the benefit of avoiding the conceptual difficulties of spurious changes. However, somewhat like counts, they are difficult to interpret on their own, as well as highly variable, even at different points within the same lake for the same age.</p>
-</section>
-<section id="plotting" class="level2">
-<h2 class="anchored" data-anchor-id="plotting">Plotting</h2>
-<p>In 1980, the Quaternary paleoecologist John Birks wrote that computer-drawn pollen diagrams “are very useful for preliminary arrangement and interpretation of the data …. However, [they] are not sufficiently good for publication, and diagrams for publication must still be drafted by hand.” In the 2020s, all published pollen diagrams are computer generated. One wonders whether the deliberate process of hand drawing encouraged earlier generations of paleoecologists to think more deeply about the patterns they were representing. But today’s users can rapidly reconfigure their diagrams in an iterative interpretation process and finally create highly customized visualizations using the array of software tools which now exist for stratigraphic plotting. In this chapter, we’ll focus on just two: the R package <code>Rioja</code> and the Tilia software.</p>
+<p>In 1980, the Quaternary paleoecologist John Birks wrote that computer-drawn pollen diagrams “are very useful for preliminary arrangement and interpretation of the data …. However, [they] are not sufficiently good for publication, and diagrams for publication must still be drafted by hand.” In the 2020s, all published pollen diagrams are computer-generated. One wonders whether the deliberate process of hand drawing encouraged earlier generations of paleoecologists to think more deeply about the patterns they were representing. But today’s users can rapidly reconfigure their diagrams in an iterative interpretation process and finally create highly customized visualizations using the array of software tools which now exist. In this chapter, we’ll focus on just two: the R package <code>Rioja</code> and the Tilia software.</p>
 </section>
 <section id="plotting-with-rioja" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-with-rioja">Plotting with Rioja</h2>
@@ -236,18 +225,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>names - a table mapping taxa codes in spec to full taxonomic names and ecological group</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rioja)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'rioja' was built under R version 4.3.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>This is rioja  1.0-6</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(aber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rioja)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="do">## for easier data manipulation</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(aber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s take a closer look at spec. One thing we might want to do to ensure data quality is make sure the percentages aren’t obviously wrong. All the pollen percentages for any given row should sum to 100, since each individual pollen percentage is the relative abundance of that taxon at that depth. Let’s see if the data meet this expectation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(aber<span class="sc">$</span>spec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(aber<span class="sc">$</span>spec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   300    305    310    315    320    325    330    335    340    345    350 
  99.42  99.82 100.01  99.54  99.81  99.98  99.98  99.82  99.99  99.47  99.48 
@@ -263,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>It’s not perfect, but they add up more or less to 100 - good! Let’s actually try plotting the data now, using the <code>strat.plot</code> function. The first argument of the function is the pollen spectra to be represented, and we add two additional arguments. Setting <code>scale.percent</code> to true gives a better visualization for percentage data, and setting <code>y.rev</code> to true reverses the y axis, so larger values are below smaller values. This is a standard convention for stratigraphic plots, where age and depth increase as you proceed further down the core.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber<span class="sc">$</span>spec, <span class="at">scale.percent=</span><span class="cn">TRUE</span>, <span class="at">y.rev=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber<span class="sc">$</span>spec, <span class="at">scale.percent=</span><span class="cn">TRUE</span>, <span class="at">y.rev=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -275,10 +260,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>It looks pretty good! But one criticism we might make is that it’s a little hard to isolate any patterns of ecological change within the complexity. <i>Betula</i> seems to be dominant for a period before being superseded by <i>Pinus sylvestris</i>, but the other pollen taxa are hard to interpret. Many of them are such small percentages compared to <i>Betula</i> and <i>Pinus sylvestris</i> that it’s difficult to see what’s going on with them.</p>
 <p>Because those smaller pollen percentages are so difficult to see and are only adding to the clutter at this point, we can choose remove them. This can be done systematically by eliminating all columns with a mean percentage of pollen less than, say, 3%. The following list comprehension achieves that.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>aber_streamlined1  <span class="ot">=</span> aber<span class="sc">$</span>spec[<span class="fu">colMeans</span>(aber<span class="sc">$</span>spec)<span class="sc">&gt;</span><span class="dv">3</span>]</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_streamlined1, <span class="at">scale.percent=</span><span class="cn">TRUE</span>, <span class="at">y.rev=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>aber_streamlined1  <span class="ot">=</span> aber<span class="sc">$</span>spec[<span class="fu">colMeans</span>(aber<span class="sc">$</span>spec)<span class="sc">&gt;</span><span class="dv">3</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_streamlined1, <span class="at">scale.percent=</span><span class="cn">TRUE</span>, <span class="at">y.rev=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -288,23 +273,221 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>That looks even better! A clearer story is emerging: we see an early period dominated by herbs and grasses, followed by an intermediate period of birch and hazel, and ending with an era dominated by pine (pine pollen, at least!).</p>
+<section id="substituting-age-for-depth" class="level3">
+<h3 class="anchored" data-anchor-id="substituting-age-for-depth">Substituting Age for Depth</h3>
 <p>But how fast did these events occur? We can’t simply assume that depth is one-to-one with time, because as the vegetation tracked by this sediment core changed, the rate of sedimentation may well have changed too. One can imagine that a prairie landscape suggested at the bottom of the core, perhaps grazed by large herds of animals, would have greater disturbance and sedimentation then a later forest landscape, where tree roots are keeping the soil solidly in place.</p>
 <p>Luckily, the aber dataset comes with a chronology that we can use in place of depth for our y axis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_streamlined1, <span class="at">yvar=</span>aber<span class="sc">$</span>ages<span class="sc">$</span><span class="st">`</span><span class="at">Age (years BP)</span><span class="st">`</span>, <span class="at">scale.percent=</span><span class="cn">TRUE</span>, <span class="at">y.rev=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_streamlined1, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">yvar=</span>aber<span class="sc">$</span>ages<span class="sc">$</span><span class="st">`</span><span class="at">Age (years BP)</span><span class="st">`</span>, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">scale.percent=</span><span class="cn">TRUE</span>, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y.rev=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="chp1_stratplot_files/figure-html/five-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="chp1_stratplot_files/figure-html/five-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Substituting time for depth doesn’t wildly change our understanding of the dynamics at Abernethy. One of the biggest changes is that, actually, that earliest ecological period lasted longer than we might have guessed from the depth profile, suggesting a slower sedimentation rate then. Still, having a chronology is generally preferably to going by bare depth, since it enables comparison to other sites and allows us to disentangle real ecological change from change in sedimentation rate.</p>
 </section>
+<section id="scale-factor" class="level3">
+<h3 class="anchored" data-anchor-id="scale-factor">Scale Factor</h3>
+<p>Earlier, we grabbed just the most prevalent taxa at our site. But you may care about a taxon that doesn’t show up as abundantly in the pollen-record – perhaps because it’s insect-pollinated rather than wind-pollinated – but whose presences are meaningful, nonetheless. We can exaggerate the scale factor of these taxa in order to emphasize their importance. Let’s do so with the insect-pollinated taxa, <i>Veronica</i>.</p>
+<p>First, we’ll bind the column of <i>Veronica</i> from the original dataframe to our most prevalent taxa. We’ll set plot.poly to TRUE to plot polygons, since we’ll want to change the fill colors, and we’ll also make sure the names are correctly formatted by explicitly renaming the column headings.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>aber_exag <span class="ot">=</span> aber<span class="sc">$</span>spec<span class="sc">$</span>VERONICA <span class="sc">%&gt;%</span> <span class="fu">cbind</span>(aber_streamlined1)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(aber_exag) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Veronica"</span>,<span class="st">"Betula"</span>,<span class="st">"Pinus sylvetris"</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Corylus"</span>, <span class="st">"Salix"</span>, <span class="st">"Juniperus"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Empetrum"</span>,<span class="st">"Gramineae"</span>,<span class="st">"Cyperaceae"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Artemisia"</span>,<span class="st">"Rumexaceae"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_exag, </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">yvar=</span>aber<span class="sc">$</span>ages<span class="sc">$</span><span class="st">`</span><span class="at">Age (years BP)</span><span class="st">`</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">scale.percent=</span><span class="cn">TRUE</span>, </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">y.rev=</span><span class="cn">TRUE</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">plot.poly=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chp1_stratplot_files/figure-html/six-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can see above the non-exaggerated version of the graph. Because scale.percent is set to TRUE, <i>Veronica</i> appears very small. One option we have is simply to set scale.percent to FALSE, in which case all the columns will have equal width. Another option is to add in a logical vector as the value of the exag parameter, which will add in a shadow wherever exag is TRUE. Let’s show these options below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_exag, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">yvar=</span>aber<span class="sc">$</span>ages<span class="sc">$</span><span class="st">`</span><span class="at">Age (years BP)</span><span class="st">`</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">scale.percent=</span><span class="cn">FALSE</span>, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y.rev=</span><span class="cn">TRUE</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">plot.poly=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chp1_stratplot_files/figure-html/seven-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_exag, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">yvar=</span>aber<span class="sc">$</span>ages<span class="sc">$</span><span class="st">`</span><span class="at">Age (years BP)</span><span class="st">`</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">scale.percent=</span><span class="cn">TRUE</span>, </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y.rev=</span><span class="cn">TRUE</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">plot.poly=</span><span class="cn">TRUE</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">exag=</span><span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="fu">rep</span>(<span class="cn">FALSE</span>,<span class="dv">10</span>)), </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.exag=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chp1_stratplot_files/figure-html/seven-2.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A third option is shown below. You can multiply the actual values of the <i>Veronica</i> column by, say, a factor of 10, and then modify the color of the polygons themselves to visually indicate this. If you do this, you’ll want to be very careful to explain to your audience what the values of <i>Veronica</i> really mean. This will include changing the x-axis labels, perhaps in Illustrator to show, what the actual values are. You don’t want to falsify your data!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ver_exag <span class="ot">=</span> aber<span class="sc">$</span>spec<span class="sc">$</span>VERONICA<span class="sc">*</span><span class="dv">10</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>aber_exag2 <span class="ot">=</span>  ver_exag <span class="sc">%&gt;%</span> <span class="fu">cbind</span>(aber_streamlined1)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(aber_exag2) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Veronica"</span>,<span class="st">"Betula"</span>,<span class="st">"Pinus sylvestris"</span>, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Corylus"</span>, <span class="st">"Salix"</span>, <span class="st">"Juniperus"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Empetrum"</span>,<span class="st">"Gramineae"</span>,<span class="st">"Cyperaceae"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Artemisia"</span>,<span class="st">"Rumexaceae"</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_exag2,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">yvar=</span>aber<span class="sc">$</span>ages<span class="sc">$</span><span class="st">`</span><span class="at">Age (years BP)</span><span class="st">`</span>,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">scale.percent=</span><span class="cn">TRUE</span>, </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">y.rev=</span><span class="cn">TRUE</span>, </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">plot.poly=</span><span class="cn">TRUE</span>,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.poly=</span><span class="fu">c</span>(<span class="st">"orange"</span>,<span class="fu">rep</span>(<span class="st">"yellow"</span>,<span class="dv">10</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chp1_stratplot_files/figure-html/eight-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>That looks pretty good. And as long as we’re modifying colors, we might as well show some other color changes you can make. You can change the colors of the bars in the plot as well as the overarching line:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_exag2,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">yvar=</span>aber<span class="sc">$</span>ages<span class="sc">$</span><span class="st">`</span><span class="at">Age (years BP)</span><span class="st">`</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">scale.percent=</span><span class="cn">TRUE</span>, </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y.rev=</span><span class="cn">TRUE</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">plot.poly=</span><span class="cn">TRUE</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.poly=</span><span class="fu">c</span>(<span class="st">"orange"</span>,<span class="fu">rep</span>(<span class="st">"yellow"</span>,<span class="dv">10</span>)),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.line=</span><span class="st">"red"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.bar=</span><span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chp1_stratplot_files/figure-html/ten-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="column-order" class="level3">
+<h3 class="anchored" data-anchor-id="column-order">Column Order</h3>
+<p>You may want to group like taxa together by habit. This can be easily achieved by reordering the columns in the dataframe you’re plotting, as follows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>aber_reordered <span class="ot">=</span> aber_exag2[,<span class="fu">c</span>(<span class="st">"Betula"</span>,<span class="st">"Pinus sylvestris"</span>, </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Corylus"</span>,<span class="st">"Salix"</span>,<span class="st">"Juniperus"</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Veronica"</span>,<span class="st">"Empetrum"</span>,<span class="st">"Gramineae"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Cyperaceae"</span>,<span class="st">"Artemisia"</span>,<span class="st">"Rumexaceae"</span>)]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_reordered,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">yvar=</span>aber<span class="sc">$</span>ages<span class="sc">$</span><span class="st">`</span><span class="at">Age (years BP)</span><span class="st">`</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">scale.percent=</span><span class="cn">TRUE</span>, </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">y.rev=</span><span class="cn">TRUE</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">plot.poly=</span><span class="cn">TRUE</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.poly=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"yellow"</span>,<span class="dv">5</span>),<span class="st">"orange"</span>,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">rep</span>(<span class="st">"yellow"</span>,<span class="dv">5</span>)),</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.line=</span><span class="st">"black"</span>,</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.bar=</span><span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chp1_stratplot_files/figure-html/nine-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice that we had to reconfigure the color vector when we reordered to make sure that Veronica stayed orange even as its position changed.</p>
+</section>
+<section id="coniss" class="level3">
+<h3 class="anchored" data-anchor-id="coniss">CONISS</h3>
+<p>You can also add a CONISS diagram to your stratigraphic plot in R. To do this, first you need to create a dissimilarity matrix from your data, which we’ll do with the R package <code>vegan</code>, and then use that matrix as an input to the <code>rioja</code> function chclust, the output of which can be plugged into the stratigraphic plot. One thing to be very careful of here is not to use the dataframe with the exaggerated values for <i>Veronica</i> when you make your dissimilarity matrix!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>dissim <span class="ot">=</span> <span class="fu">vegdist</span>(aber_exag)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>aber_clust <span class="ot">&lt;-</span> <span class="fu">chclust</span>(dissim, <span class="at">method =</span> <span class="st">"coniss"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_reordered,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">yvar=</span>aber<span class="sc">$</span>ages<span class="sc">$</span><span class="st">`</span><span class="at">Age (years BP)</span><span class="st">`</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">scale.percent=</span><span class="cn">TRUE</span>, </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">y.rev=</span><span class="cn">TRUE</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">plot.poly=</span><span class="cn">TRUE</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.poly=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"yellow"</span>,<span class="dv">5</span>),<span class="st">"orange"</span>,<span class="fu">rep</span>(<span class="st">"yellow"</span>,<span class="dv">5</span>)),</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.line=</span><span class="st">"black"</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.bar=</span><span class="st">"black"</span>,</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">clust=</span>aber_clust)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chp1_stratplot_files/figure-html/eleven-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="summary-panel" class="level3">
+<h3 class="anchored" data-anchor-id="summary-panel">Summary Panel</h3>
+<p><code>Rioja</code> doesn’t have great options for making a summary plot of herbs versus trees, but it is possible. I do so below by adding all the herb percentages together (in the non-<i>Veronica</i>-inflated dataframe) and binding it to my plotting dataframe. Then I just make sure the column is named properly, change its color in the plot, and add in a background color to make it easier to see the negative space in that plot. Unfortunately, there’s no simple way to modify the background color of each curve in <code>rioja</code> separately.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>aber_exag <span class="ot">=</span> aber_exag <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">all_herbs =</span> Veronica <span class="sc">+</span> Empetrum <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                  Gramineae <span class="sc">+</span> Cyperaceae <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                  Artemisia <span class="sc">+</span> Rumexaceae)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>aber_reordered <span class="ot">=</span> aber_reordered <span class="sc">%&gt;%</span> <span class="fu">cbind</span>(aber_exag<span class="sc">$</span>all_herbs)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(aber_reordered)[<span class="dv">12</span>] <span class="ot">=</span> <span class="st">"Herbs versus Trees"</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">strat.plot</span>(aber_reordered,</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">yvar=</span>aber<span class="sc">$</span>ages<span class="sc">$</span><span class="st">`</span><span class="at">Age (years BP)</span><span class="st">`</span>,</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">scale.percent=</span><span class="cn">TRUE</span>, </span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">y.rev=</span><span class="cn">TRUE</span>,</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">plot.poly=</span><span class="cn">TRUE</span>,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.poly=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"yellow"</span>,<span class="dv">5</span>),<span class="st">"orange"</span>,<span class="fu">rep</span>(<span class="st">"yellow"</span>,<span class="dv">5</span>),<span class="st">'green'</span>),</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.line=</span><span class="st">"black"</span>,</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.bar=</span><span class="st">"black"</span>,</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>           <span class="at">col.bg=</span><span class="st">"tan"</span>,</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>           <span class="at">clust=</span>aber_clust)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chp1_stratplot_files/figure-html/twelve-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="other-changes" class="level3">
+<h3 class="anchored" data-anchor-id="other-changes">Other Changes</h3>
+<p>We made a pretty sophisticated plot in <code>rioja</code>. To make further aesthetic changes, you might want to export your graphic as a .emf file and manipulate it further in Adobe Illustrator.</p>
+</section>
+</section>
 <section id="plotting-with-tilia" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-with-tilia">Plotting with Tilia</h2>
-<p>Tilia is a software program developed by Eric Grimm which enables users to upload their data into Neotoma, and also allows users to develop pollen diagrams, using Neotoma data or their own data. You can install Tilia by following the directions on this <a href="http://neotomadb.org/apps/tilia">page</a></p>
+<p>Tilia is a software program developed by Eric Grimm which enables users to upload their data into Neotoma, and also allows users to develop pollen diagrams, using Neotoma data or their own data. You can install Tilia by following the directions on this <a href="http://neotomadb.org/apps/tilia">page</a>.</p>
 <section id="formatting-data" class="level3">
 <h3 class="anchored" data-anchor-id="formatting-data">Formatting data</h3>
 <p>In order to plot pollen data from a non-Neotoma source in Tilia, there is a preliminary data-formatting step. We want to convert our pollen counts into pollen percentages, which we will plot directly in Tilia. In order to calculate pollen percentages, we need to sum all the pollen counted at each sample depth and then divide each individual count by the count sum at that depth, as shown in the following video.</p>
